@@ -3,3 +3,5 @@ This is a collection of my Golang projects. The projects are organized by catego
 `Web Server` : These projects are web servers that can be used to host websites and web applications.
 <br/>
 `CRUD API` : These projects are RESTful APIs that provide Create, Read, Update, and Delete operations on a resource.
+<br />
+`Slack-age-bot` : These project make use of Slack API for calculating our age.
