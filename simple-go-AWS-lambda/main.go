@@ -8,7 +8,7 @@ import (
 
 type MyEvent struct {
 	Name string `json:"what is your name?"`
-	Age  int    `json:"How old are you"`
+	Age  int    `json:"How old are you?"`
 }
 
 type MyResponse struct {
