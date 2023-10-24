@@ -15,6 +15,8 @@ Projects:
 
 `Email-verifier-tool`: A handy Golang tool for validating email addresses including checks for domain validity, presence of MX record, SPF record, DMARC record, and more.
 
+`Unit-testing`:
+
 Your contributions and suggestions are most welcome. Let's collaborate and empower the Go community together!
 
 ## Contributing
