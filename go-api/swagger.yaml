@@ -1,0 +1,144 @@
+swagger: '2.0'
+info:
+  version: '1.0.0'
+  title: 'Go Books API using Gin'
+  description: 'A simple API for managing books'
+host: "localhost:8080" 
+basePath: "/"
+schemes:
+  - "http"
+  - "https"
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+paths:
+  /:
+    get:
+      description: 'Get the homepage'
+      responses:
+        '200':
+          description: 'Successful response'
+          schema:
+            type: 'string'
+          examples:
+            success:
+              value: 'Hello Sir Welcome to a Tutorial of Go-API using Gin'
+
+  /books:
+    get:
+      description: 'Get all books'
+      responses:
+        '200':
+          description: 'Successful response'
+          schema:
+            type: 'array'
+            items:
+              $ref: '#/definitions/Book'
+          examples:
+            success:
+              value:
+                - id: '1'
+                  title: 'In seacrh of lost time'
+                  author: 'Marcel Proust'
+                  quantity: 3
+                - id: '2'
+                  title: 'The Great Gatsby'
+                  author: 'F. Scott Fitzgerald'
+                  quantity: 4
+                - id: '3'
+                  title: 'War and Piece'
+                  author: 'Leo Tolstoy'
+                  quantity: 6
+
+    post:
+      description: 'Create a new book'
+      parameters:
+        - in: 'body'
+          name: 'body'
+          description: 'Book object'
+          required: true
+          schema:
+            $ref: '#/definitions/Book'
+      responses:
+        '201':
+          description: 'Successful response'
+          schema:
+            $ref: '#/definitions/Book'
+          examples:
+            success:
+              value:
+                id: '4'
+                title: 'New Book'
+                author: 'Author Name'
+                quantity: 1
+
+  /books/{id}:
+    get:
+      description: 'Get a book by ID'
+      parameters:
+        - in: 'path'
+          name: 'id'
+          type: 'string'
+          required: true
+      responses:
+        '200':
+          description: 'Successful response'
+          schema:
+            $ref: '#/definitions/Book'
+        '404':
+          description: 'Book not found'
+
+  /checkout:
+    patch:
+      description: 'Checkout a book'
+      parameters:
+        - in: 'query'
+          name: 'id'
+          type: 'string'
+          required: true
+      responses:
+        '200':
+          description: 'Successful response'
+          schema:
+            $ref: '#/definitions/Book'
+        '400':
+          description: 'Bad Request'
+        '404':
+          description: 'Book not found'
+
+  /return:
+    patch:
+      description: 'Return a book'
+      parameters:
+        - in: 'query'
+          name: 'id'
+          type: 'string'
+          required: true
+      responses:
+        '200':
+          description: 'Successful response'
+          schema:
+            $ref: '#/definitions/Book'
+        '400':
+          description: 'Bad Request'
+        '404':
+          description: 'Book not found'
+
+definitions:
+  Book:
+    type: 'object'
+    properties:
+      id:
+        type: 'string'
+      title:
+        type: 'string'
+      author:
+        type: 'string'
+      quantity:
+        type: 'integer'
+    required:
+      - id
+      - title
+      - author
+      - quantity
